@@ -1,0 +1,20 @@
+package mydefined:package3hl16smu1p;
+
+interface itf0-tmmdqdfhit {
+    resource handle {
+        constructor(path: string);
+        append: func(data: string);
+    }
+
+    open-temp: func() -> own<handle>;
+}
+
+world world0-pvwxtgtmlk {
+    export itf0-tmmdqdfhit;
+    include wasi:cli/imports@0.2.0;
+    export wasi:cli/run@0.2.0;
+}
+
+
+
+
