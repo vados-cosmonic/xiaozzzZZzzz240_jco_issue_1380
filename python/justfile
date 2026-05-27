@@ -22,4 +22,8 @@ gen-bindings: wit-fetch
 
 # Build python wasm component
 build: gen-bindings
-    {{uv}} run componentize-py -d wit componentize component.py
+    {{uv}} run componentize-py \
+    -d wit \
+    componentize \
+    -o component.wasm \
+    component
