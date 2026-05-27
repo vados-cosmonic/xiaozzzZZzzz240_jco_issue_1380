@@ -13,6 +13,8 @@ wasi_sdk_base_dir := env_var("WASI_SDK")
 wit-fetch:
     {{wkg}} wit fetch
 
+# NOTE: you will need a recent version of wit-bindgen
+#
 # Generate WIT bindings
 gen-bindings: wit-fetch
     {{wit_bindgen}} cpp wit --world consumer --out-dir bindings
