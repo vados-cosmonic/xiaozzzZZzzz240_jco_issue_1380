@@ -1,7 +1,0 @@
-package mydefined:package3hl16smu1p;
-
-world world1-consumer {
-    import itf0-tmmdqdfhit;
-    include wasi:cli/imports@0.2.0;
-    export wasi:cli/run@0.2.0;
-}

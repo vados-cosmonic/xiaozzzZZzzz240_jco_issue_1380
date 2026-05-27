@@ -1,6 +1,6 @@
-package mydefined:package3hl16smu1p;
+package test:jco-bug;
 
-interface itf0-tmmdqdfhit {
+interface handle {
     resource handle {
         constructor(path: string);
         append: func(data: string);
@@ -9,12 +9,8 @@ interface itf0-tmmdqdfhit {
     open-temp: func() -> own<handle>;
 }
 
-world world0-pvwxtgtmlk {
-    export itf0-tmmdqdfhit;
+world consumer {
     include wasi:cli/imports@0.2.0;
+    import handle;
     export wasi:cli/run@0.2.0;
 }
-
-
-
-
