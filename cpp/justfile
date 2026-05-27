@@ -4,7 +4,7 @@ wit_bindgen := env_var_or_default("WIT_BINDGEN", "wit-bindgen")
 
 # Required base dir to installation of wasi-sdk
 # see: https://github.com/WebAssembly/wasi-sdk
-wasi_sdk_base_dir := env_var("WASI_SDK")
+wasi_sdk_base_dir := env_var_or_default("WASI_SDK", "~/installs/wasi-sdk-30.0-x86_64-linux")
 
 @_default:
     {{just}} --list

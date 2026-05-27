@@ -1,4 +1,5 @@
 just := env_var_or_default("JUST", just_executable())
+wac := env_var_or_default("WAC", "wac")
 
 @_default:
     {{just}} --list
@@ -13,14 +14,14 @@ build:
 # Build the Python component (producer/exporter)
 [group('build')]
 build-python:
-    {{just}} -C python build
+    {{just}} --justfile python/justfile build
 
 # Build the C++ component (consumer/importer)
 [group('build')]
 build-cpp:
-    {{just}} -C cpp build
+    {{just}} --justfile cpp/justfile build
 
 # Build the combined component
 [group('build')]
 build-combined:
-    {{wac}} plug cpp/component.wasm --plug python/compnent.wasm -o combined.wasm
+    {{wac}} plug cpp/component.wasm --plug python/component.wasm -o combined.wasm
