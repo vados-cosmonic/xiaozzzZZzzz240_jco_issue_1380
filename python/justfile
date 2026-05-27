@@ -1,0 +1,18 @@
+uv := env_var_or_default("UV", "uv")
+wkg := env_var_or_default("WKG", "wkg")
+just := env_var_or_default("JUST", just_executable())
+
+@_default:
+    {{just}} --list
+
+# Fetch required WIT (i.e. wasi)
+wit-fetch:
+    {{wkg}} wit fetch
+
+# Generate WIT bindings
+gen-bindings: wit-fetch
+    {{uv}} run componentize-py -d wit bindings component/bindings
+
+# Build python wasm component
+build: gen-bindings
+    {{uv}} run componentize-py -d wit componentize component/component.py
