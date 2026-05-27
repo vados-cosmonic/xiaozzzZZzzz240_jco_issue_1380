@@ -1,6 +1,6 @@
 package test:jco-bug;
 
-interface handle {
+interface iface {
     resource handle {
         constructor(path: string);
         append: func(data: string);
@@ -12,7 +12,7 @@ interface handle {
 world component {
     include wasi:cli/imports@0.2.0;
 
-    export handle;
+    export iface;
 
     export wasi:cli/run@0.2.0;
 }
