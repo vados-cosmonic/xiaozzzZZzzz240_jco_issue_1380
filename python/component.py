@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import sys
 
-from bindings import exports
-import bindings.exports.handle as handle
+from bindings.wit_world import exports
+import bindings.wit_world.exports.handle as handle
 
 # componentize-py may resolve this module by top-level name.
 sys.modules.setdefault("handle", handle)

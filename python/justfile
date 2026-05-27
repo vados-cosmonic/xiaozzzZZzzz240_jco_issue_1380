@@ -2,8 +2,14 @@ uv := env_var_or_default("UV", "uv")
 wkg := env_var_or_default("WKG", "wkg")
 just := env_var_or_default("JUST", just_executable())
 
+bindings_dir := "bindings"
+
 @_default:
     {{just}} --list
+
+# Set up the project
+setup:
+    {{uv}} sync
 
 # Fetch required WIT (i.e. wasi)
 wit-fetch:
@@ -11,8 +17,9 @@ wit-fetch:
 
 # Generate WIT bindings
 gen-bindings: wit-fetch
-    {{uv}} run componentize-py -d wit bindings component/bindings
+    rm -rf {{bindings_dir}}
+    {{uv}} run componentize-py -d wit bindings {{bindings_dir}}
 
 # Build python wasm component
 build: gen-bindings
-    {{uv}} run componentize-py -d wit componentize component/component.py
+    {{uv}} run componentize-py -d wit componentize component.py
