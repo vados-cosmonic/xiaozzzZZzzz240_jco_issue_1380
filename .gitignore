@@ -7,3 +7,4 @@
 /combined.wasm
 node_modules
 runner/transpiled
+/runner/transpiled-python/
